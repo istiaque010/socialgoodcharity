@@ -182,6 +182,10 @@ contract userRegistration {
 }
 
 ```
+### Smart Contract Deployed View:
+
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/7e6f0d2c-1beb-45a1-9731-a7e419231f68)
+
 
 # KYC Verification Smart Contract
 
@@ -257,6 +261,9 @@ contract KYC {
 }
 
 ```
+### Smart Contract Deployed View:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/9fc1ab76-3f4d-4869-bcf5-2ed465de2364)
+
 
 # Institution Registration smart Contrac
 
@@ -443,6 +450,9 @@ contract CharityPlatform {
 }
 
 ```
+### Smart Contract Deployed View:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/332aa325-1107-4bac-976b-3b93a781e3b1)
+
 
 # Charity Project Registration Smart Contract
 
@@ -777,6 +787,10 @@ contract createCharityPro{
 }
 
 ```
+### Smart Contract Deployed View:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/1f95f4b5-1434-4b41-8eef-51d0d38820c3)
+
+
 
 # JavaScript for HASH, Random Time and Selection
 ```javascript
