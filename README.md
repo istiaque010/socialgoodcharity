@@ -778,7 +778,7 @@ contract createCharityPro{
 
 ```
 
-# JavaScript Code for Random Time Delay and HASH
+# JavaScript for HASH, Random Time and Selection
 
 
 # Social Good Charity
