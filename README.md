@@ -6,6 +6,9 @@ The charity impacts society significantly in areas including education, healthca
 
 # Schema design
 
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/e16dbfaf-55a6-44ee-9d3b-22221661116b)
+
+
 # Figure 1. Structure of Proposed Framework
 
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/4f068267-b88b-4123-a752-50fc4dc494bc)
