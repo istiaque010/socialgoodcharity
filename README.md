@@ -869,7 +869,11 @@ randomDelay((actualDelay) => {
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/ee18b7ab-16fd-417b-8de7-90f0186c5796)
 
 
-# Social Good Charity
+# Proposed UI/UX Figma Desing 
+[GitHub]: https://www.figma.com/file/g7y6lpkuKJCX3obTEcM8kM/crazycrypto?type=design&node-id=0-1&mode=design
+
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/34ff5389-4552-41e8-99dd-7af26cec95b7)
+
 
 
 # Social Good Charity
