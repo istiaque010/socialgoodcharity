@@ -8,19 +8,31 @@ The charity impacts society significantly in areas including education, healthca
 
 # Figure 1. Structure of Proposed Framework
 
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/4f068267-b88b-4123-a752-50fc4dc494bc)
+
+
 # Figure 2. Entities of Proposed Framework
+
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/2a0cc866-f6da-47d7-926a-239fbd1be162)
+
 
 # Figure 3. Operation Flow of Proposed Framework
 
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/d7e44a74-60b0-4763-9c1f-a49c1999529f)
+
+
 # Figure 5. Know Your Customer Approach
 
-# Social Good Charity
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/37d16771-e6b7-473f-8e63-f64e51855333)
 
-# Social Good Charity
 
-# Social Good Charity
+# User Registration smart Contract
 
-# Social Good Charity
+# KYC Verification Smart Contract
+
+# Institution Registration smart Contrac
+
+# Charity Project Registration Smart Contract
 
 # Social Good Charity
 
