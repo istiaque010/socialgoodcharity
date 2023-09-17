@@ -877,26 +877,9 @@ randomDelay((actualDelay) => {
 
 
 
-# Social Good Charity
+# Prototype Test in Localhost
+
+![Untitled](https://github.com/istiaque010/socialgoodcharity/assets/7622349/f0c3c5b5-073c-4da0-914d-00d11b062a88)
 
 
-# Social Good Charity
-
-
-# Social Good Charity
-
-
-# Social Good Charity
-
-
-# Social Good Charity
-
-
-# Social Good Charity
-
-
-# Social Good Charity
-
-
-# Social Good Charity
 
