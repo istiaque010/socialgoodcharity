@@ -466,7 +466,7 @@ pragma solidity >=0.8.0 <0.9.0;
 
 import './KYC.sol';
 
-contract createCharityPro{
+contract createCharityPro {
     address public owner;
     KYC KYCaddress;
 
@@ -490,13 +490,13 @@ contract createCharityPro{
         invalid_category
     }
 
-    enum RefundPolicy{
+    enum RefundPolicy {
         REFUNDABLE,
         NONREFUNDABLE
     }
 
-    // Structure of each project in our dApp 
-    struct Project{
+    // Structure of each project in our dApp
+    struct Project {
         string projectName;
         string projectDescription;
         string creatorName;
@@ -517,10 +517,12 @@ contract createCharityPro{
         bool[] refundClaimed;
         bool claimedAmount;
         bool isApproved;
+        uint256 trusteeThreshold; // Minimum number of trustee approvals required
+        uint256 trusteeApprovalCount; // Count of trustee approvals received
     }
 
     // Structure used to return metadata of each project
-    struct ProjectMetadata{
+    struct ProjectMetadata {
         string projectName;
         string projectDescription;
         string creatorName;
@@ -534,25 +536,27 @@ contract createCharityPro{
     }
 
     // Each user funding gets recorded in Funded structure
-    struct Funded{
-		uint256 projectIndex;
-		uint256 totalAmount;
+    struct Funded {
+        uint256 projectIndex;
+        uint256 totalAmount;
     }
 
-    // Stores all the projects 
-    Project[] projects;
+    // Stores all the projects
+    Project[] public projects;
+
+    // Mapping to track trustee approvals for each project
+    mapping(uint256 => mapping(address => bool)) public trusteeApprovals;
 
     // Stores the indexes of projects created on projects list by an address
-    mapping(address => uint256[]) addressProjectsList;
+    mapping(address => uint256[]) public addressProjectsList;
 
-    // Stores the list of fundings  by an address
-    mapping(address => Funded[]) addressFundingList;
-
+    // Stores the list of fundings by an address
+    mapping(address => Funded[]) public addressFundingList;
 
     // Add this modifier to restrict access to the contract owner
     modifier onlyOwner() {
-    require(msg.sender == owner, "Only the contract owner can perform this action");
-      _;
+        require(msg.sender == owner, "Only the contract owner can perform this action");
+        _;
     }
 
     // Checks if an index is a valid index in projects array
@@ -561,66 +565,95 @@ contract createCharityPro{
         _;
     }
 
-     modifier onlyVerifiedKYC() {
+    modifier onlyVerifiedKYC() {
         require(KYCaddress.isKYCapproved(msg.sender), "Only verified KYC can create");
         _;
     }
 
-
-  constructor(address _KYCaddress) {
+    constructor(address _KYCaddress) {
         owner = msg.sender;
-        KYCaddress=KYC(_KYCaddress); //convert the address and set the address for KYC
+        KYCaddress = KYC(_KYCaddress); //convert the address and set the address for KYC
     }
-
 
     // Create a new project and updates the addressProjectsList and projects array
     function createNewProject(
-         string memory _name,
-         string memory _desc,
-         string memory _creatorName,
-         string memory _projectLink,
-         uint256 _fundingGoal,
-         uint256 _duration,
-         Category _category,
-         RefundPolicy _refundPolicy,
-         address[] memory _trustees,
-         address[] memory _volunteers,
-         address[] memory _implementAreas
-        ) external onlyVerifiedKYC {
-            projects.push(Project({
-            creatorAddress: msg.sender,
-            projectName: _name,
-            projectDescription: _desc,
-            creatorName: _creatorName,
-            projectLink: _projectLink,
-            fundingGoal: _fundingGoal * 10**18,
-            duration: _duration * (1 minutes),
-            creationTime: block.timestamp,
-            category: _category,
-            refundPolicy: _refundPolicy,
-            amountRaised: 0,
-            contributors: new address[](0),
-            trustees: _trustees,        // Add trustees
-            volunteers: _volunteers,    // Add volunteers
-            beneficiaries: new address[](0), // Initialize beneficiaries as an empty array
-            implementAreas: _implementAreas, // Add implementAreas
-            amount: new uint256[](0),
-            claimedAmount: false,
-            isApproved: false,
-            refundClaimed: new bool[](0)
-            }));
-            addressProjectsList[msg.sender].push(projects.length - 1);  // Store the project IDs in the corresponding address
+        string memory _name,
+        string memory _desc,
+        string memory _creatorName,
+        string memory _projectLink,
+        uint256 _fundingGoal,
+        uint256 _duration,
+        Category _category,
+        RefundPolicy _refundPolicy,
+        address[] memory _trustees,
+        address[] memory _volunteers,
+        address[] memory _implementAreas,
+        uint256 _trusteeThreshold // Minimum trustee approvals required
+    ) external onlyVerifiedKYC {
+        projects.push(
+            Project({
+                creatorAddress: msg.sender,
+                projectName: _name,
+                projectDescription: _desc,
+                creatorName: _creatorName,
+                projectLink: _projectLink,
+                fundingGoal: _fundingGoal * 10**18,
+                duration: _duration * (1 minutes),
+                creationTime: block.timestamp,
+                category: _category,
+                refundPolicy: _refundPolicy,
+                amountRaised: 0,
+                contributors: new address[](0),
+                trustees: _trustees, // Add trustees
+                volunteers: _volunteers, // Add volunteers
+                beneficiaries: new address[](0), // Initialize beneficiaries as an empty array
+                implementAreas: _implementAreas, // Add implementAreas
+                amount: new uint256[](0),
+                claimedAmount: false,
+                isApproved: false,
+                refundClaimed: new bool[](0),
+                trusteeThreshold: _trusteeThreshold, // Set trustee threshold
+                trusteeApprovalCount: 0 // Initialize trustee approval count
+            })
+        );
+        addressProjectsList[msg.sender].push(projects.length - 1); // Store the project IDs in the corresponding address
     }
 
-
-     // This function to approve a charity project
+    // This function to approve a charity project
     function approveProject(uint256 _index) external onlyOwner validIndex(_index) {
         require(!projects[_index].isApproved, "Project is already approved");
         require(_index < projects.length, "Invalid Project Index"); // Check if the project index is valid
 
-        // Perform any additional checks or actions you want when approving a project
+        // Ensure the caller is either the contract owner or a trustee of the project
+        require( msg.sender == owner || isTrusteeOfProject(_index, msg.sender), "Only trustees and owner can approve"
+        );
 
-         projects[_index].isApproved = true;
+        // Check if the trustee has not already approved this project
+        require( !trusteeApprovals[_index][msg.sender], "Trustee has already approved this project");
+
+        // Mark the trustee's approval
+        trusteeApprovals[_index][msg.sender] = true;
+        projects[_index].trusteeApprovalCount++;
+
+        // Check if the approval threshold is met
+        if (projects[_index].trusteeApprovalCount >= projects[_index].trusteeThreshold) {
+            projects[_index].isApproved = true;
+        }
+    }
+
+
+    // Helper function to check if an address is a trustee of a project
+    function isTrusteeOfProject(uint256 _index, address _address)
+        internal
+        view
+        returns (bool)
+    {
+        for (uint256 i = 0; i < projects[_index].trustees.length; i++) {
+            if (projects[_index].trustees[i] == _address) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -789,7 +822,6 @@ contract createCharityPro{
 
 
 }
-
 ```
 ### Smart Contract Deployed View:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/1f95f4b5-1434-4b41-8eef-51d0d38820c3)
