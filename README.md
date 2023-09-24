@@ -458,7 +458,7 @@ contract CharityPlatform {
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/332aa325-1107-4bac-976b-3b93a781e3b1)
 
 
-# Charity Project Registration Smart Contract
+# Service Charity Project Registration Smart Contract
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -466,7 +466,7 @@ pragma solidity >=0.8.0 <0.9.0;
 
 import './KYC.sol';
 
-contract createCharityPro {
+contract serviceCharity {
     address public owner;
     KYC KYCaddress;
 
@@ -519,6 +519,14 @@ contract createCharityPro {
         bool isApproved;
         uint256 trusteeThreshold; // Minimum number of trustee approvals required
         uint256 trusteeApprovalCount; // Count of trustee approvals received
+        //from here I added extra variables for service charity
+        string serviceName;
+        string serviceProviderName;
+        address serviceProviderAddress;
+        string profession;
+        string relatedEducation;
+        string experience;
+
     }
 
     // Structure used to return metadata of each project
@@ -533,6 +541,14 @@ contract createCharityPro {
         uint256 duration;
         bool isApproved;
         Category category;
+
+        //from here I added extra variables for service charity
+        string serviceName;
+        string serviceProviderName;
+        address serviceProviderAddress;
+        string profession;
+        string relatedEducation;
+        string experience;
     }
 
     // Each user funding gets recorded in Funded structure
@@ -588,7 +604,17 @@ contract createCharityPro {
         address[] memory _trustees,
         address[] memory _volunteers,
         address[] memory _implementAreas,
-        uint256 _trusteeThreshold // Minimum trustee approvals required
+        uint256 _trusteeThreshold, // Minimum trustee approvals required
+
+          //from here I added extra variables for service charity
+        string memory _serviceName,
+        string memory _serviceProviderName,
+        address _serviceProviderAddress,
+        string memory _profession,
+        string memory _relatedEducation,
+        string memory _experience
+
+
     ) external onlyVerifiedKYC {
         projects.push(
             Project({
@@ -613,7 +639,16 @@ contract createCharityPro {
                 isApproved: false,
                 refundClaimed: new bool[](0),
                 trusteeThreshold: _trusteeThreshold, // Set trustee threshold
-                trusteeApprovalCount: 0 // Initialize trustee approval count
+                trusteeApprovalCount: 0 ,// Initialize trustee approval count
+
+                 //from here I added extra variables for service charity
+                serviceName: _serviceName,
+                serviceProviderName:_serviceProviderName,
+                serviceProviderAddress:_serviceProviderAddress,
+                profession:_profession,
+                relatedEducation:_relatedEducation,
+                experience: _experience
+
             })
         );
         addressProjectsList[msg.sender].push(projects.length - 1); // Store the project IDs in the corresponding address
@@ -671,7 +706,15 @@ contract createCharityPro {
                 projects[i].creationTime,
                 projects[i].duration,
                 projects[i].isApproved,
-                projects[i].category
+                projects[i].category,
+
+                //from here I added extra variables for service charity
+                projects[i].serviceName,
+                projects[i].serviceProviderName,
+                projects[i].serviceProviderAddress,
+                projects[i].profession,
+                projects[i].relatedEducation,
+                projects[i].experience
             );
         }
         return newList;
@@ -694,7 +737,14 @@ contract createCharityPro {
                     projects[i].creationTime,
                     projects[i].duration,
                     projects[i].isApproved,
-                    projects[i].category
+                    projects[i].category,
+                    //from here I added extra variables for service charity
+                    projects[i].serviceName,
+                    projects[i].serviceProviderName,
+                    projects[i].serviceProviderAddress,
+                    projects[i].profession,
+                    projects[i].relatedEducation,
+                    projects[i].experience
                 );
             } else {
                 newList[index] = ProjectMetadata(
@@ -707,7 +757,15 @@ contract createCharityPro {
                     0,
                     0,
                     false,
-                    Category.invalid_category
+                    Category.invalid_category,
+                    //from here I added extra variables for service charity
+                    "Invalid Project",
+                    "Invalid Project",
+                     address(0),
+                    "Invalid Project",
+                    "Invalid Project",
+                    "Invalid Project"
+
                 );
             }
 
