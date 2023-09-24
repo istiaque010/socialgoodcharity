@@ -3,7 +3,7 @@ pragma solidity >=0.8.0 <0.9.0;
 
 import './KYC.sol';
 
-contract createCharityPro {
+contract serviceCharity {
     address public owner;
     KYC KYCaddress;
 
