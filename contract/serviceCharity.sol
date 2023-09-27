@@ -63,6 +63,7 @@ contract serviceCharity {
         string profession;
         string relatedEducation;
         string experience;
+        uint256 approximateServiceValue;
 
     }
 
@@ -73,6 +74,14 @@ contract serviceCharity {
         string creatorName;
         uint256 fundingGoal;
         uint256 amountRaised;
+
+
+        address[] contributors;
+        address[] trustees;
+        address[] volunteers;
+        address[] beneficiaries;
+
+
         uint256 totalContributors;
         uint256 creationTime;
         uint256 duration;
@@ -86,6 +95,7 @@ contract serviceCharity {
         string profession;
         string relatedEducation;
         string experience;
+        uint256 approximateServiceValue;
     }
 
     // Each user funding gets recorded in Funded structure
@@ -105,6 +115,9 @@ contract serviceCharity {
 
     // Stores the list of fundings by an address
     mapping(address => Funded[]) public addressFundingList;
+
+    // Mapping to track social evaluation for each user
+    mapping(address => uint256) public socialEvaluation;
 
     // Add this modifier to restrict access to the contract owner
     modifier onlyOwner() {
@@ -149,7 +162,8 @@ contract serviceCharity {
         address _serviceProviderAddress,
         string memory _profession,
         string memory _relatedEducation,
-        string memory _experience
+        string memory _experience,
+        uint256 _approximateServiceValue
 
 
     ) external onlyVerifiedKYC {
@@ -184,7 +198,8 @@ contract serviceCharity {
                 serviceProviderAddress:_serviceProviderAddress,
                 profession:_profession,
                 relatedEducation:_relatedEducation,
-                experience: _experience
+                experience: _experience,
+                approximateServiceValue:_approximateServiceValue
 
             })
         );
@@ -206,10 +221,18 @@ contract serviceCharity {
         // Mark the trustee's approval
         trusteeApprovals[_index][msg.sender] = true;
         projects[_index].trusteeApprovalCount++;
+        socialEvaluation[msg.sender] += 1;  // Increase social evaluation for the project trustee upon approval of that project
 
         // Check if the approval threshold is met
         if (projects[_index].trusteeApprovalCount >= projects[_index].trusteeThreshold) {
             projects[_index].isApproved = true;
+            // Increase social evaluation for the project creator upon approval of that project
+            address creator = projects[_index].creatorAddress;
+            socialEvaluation[creator] += 1;
+
+            // Increase social evaluation for the project service provider upon approval of that project
+            address serviceProvider = projects[_index].serviceProviderAddress;
+            socialEvaluation[serviceProvider] += 1;
         }
     }
 
@@ -239,6 +262,12 @@ contract serviceCharity {
                 projects[i].creatorName,
                 projects[i].fundingGoal,
                 projects[i].amountRaised,
+
+                projects[i].contributors,
+                projects[i].trustees,
+                projects[i].volunteers,
+                projects[i].beneficiaries,
+
                 projects[i].contributors.length,
                 projects[i].creationTime,
                 projects[i].duration,
@@ -251,7 +280,9 @@ contract serviceCharity {
                 projects[i].serviceProviderAddress,
                 projects[i].profession,
                 projects[i].relatedEducation,
-                projects[i].experience
+                projects[i].experience,
+                projects[i].approximateServiceValue
+
             );
         }
         return newList;
@@ -270,6 +301,12 @@ contract serviceCharity {
                     projects[i].creatorName,
                     projects[i].fundingGoal,
                     projects[i].amountRaised,
+
+                    projects[i].contributors,
+                    projects[i].trustees,
+                    projects[i].volunteers,
+                    projects[i].beneficiaries,
+
                     projects[i].contributors.length,
                     projects[i].creationTime,
                     projects[i].duration,
@@ -281,7 +318,8 @@ contract serviceCharity {
                     projects[i].serviceProviderAddress,
                     projects[i].profession,
                     projects[i].relatedEducation,
-                    projects[i].experience
+                    projects[i].experience,
+                    projects[i].approximateServiceValue
                 );
             } else {
                 newList[index] = ProjectMetadata(
@@ -290,6 +328,12 @@ contract serviceCharity {
                     "Invalid Project",
                     0,
                     0,
+
+                    new address[](0),
+                    new address[](0),
+                    new address[](0),
+                    new address[](0),
+
                     0,
                     0,
                     0,
@@ -301,7 +345,8 @@ contract serviceCharity {
                      address(0),
                     "Invalid Project",
                     "Invalid Project",
-                    "Invalid Project"
+                    "Invalid Project",
+                    0
 
                 );
             }
@@ -360,6 +405,8 @@ contract serviceCharity {
         require(projects[_index].duration + projects[_index].creationTime >= block.timestamp, "Project Funding Time Expired");
         addContribution(_index);
         projects[_index].amountRaised += msg.value;
+        socialEvaluation[msg.sender] += 1;
+        }
     }
 
     // Helps project creator to transfer the raised funds to his address
@@ -413,6 +460,12 @@ contract serviceCharity {
 
         // Add the beneficiary to the project's beneficiaries array
         projects[_index].beneficiaries.push(_beneficiary);
+    }
+
+
+     // Function to get the social evaluation score for a specific address
+    function getSocialEvaluationForAddress(address _userAddress) external view returns (uint256) {
+    return socialEvaluation[_userAddress];
     }
 
 

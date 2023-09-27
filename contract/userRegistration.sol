@@ -11,6 +11,7 @@ contract userRegistration {
         string userType;
         string orgAddress;
         string instituteRole;
+        string KYCstatus;
         string userStatus;
         string addressLine;
         string phoneNumber;
@@ -62,6 +63,7 @@ contract userRegistration {
         string memory _userType,
         string memory _orgAddress,
         string memory _instituteRole,
+        string memory _KYCstatus,
         string memory _userStatus,
         string memory _addressLine,
         string memory _phoneNumber,
@@ -91,6 +93,7 @@ contract userRegistration {
             userType: _userType,
             orgAddress: _orgAddress,
             instituteRole: _instituteRole,
+            KYCstatus: _KYCstatus,
             userStatus: _userStatus,
             addressLine: _addressLine,
             phoneNumber: _phoneNumber,
