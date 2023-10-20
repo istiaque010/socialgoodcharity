@@ -6,7 +6,8 @@ This GitHub repository is to support our research paper in the area of decentral
 
 # Schema design
 
-![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/6b492f3c-05e2-4d32-a9e6-e778dae227de)
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/484fe4e0-e260-4d89-bf75-e74a97b8dc7c)
+
 
 
 
