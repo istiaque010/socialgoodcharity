@@ -280,7 +280,7 @@ contract KYC {
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract CharityPlatform {
+contract institutionReg {
     struct CharityOrganization {
         string institutionName;
         string regNumber;
