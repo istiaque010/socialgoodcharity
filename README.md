@@ -27,7 +27,8 @@ This GitHub repository is to support our research paper in the area of decentral
 
 # Figure 5. Know Your Customer Approach
 
-![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/37d16771-e6b7-473f-8e63-f64e51855333)
+![Picture1](https://github.com/istiaque010/socialgoodcharity/assets/7622349/94566f2f-3292-44b6-8490-4339caee49a7)
+
 
 
 # User Registration smart Contract
