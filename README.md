@@ -210,6 +210,8 @@ contract KYC {
     struct KYCRequest {
         address userAddress;
         string userName;
+        string id;
+        string phoneNum;
         string identificationDocument;
         KYCStatus status;
     }
@@ -232,12 +234,14 @@ contract KYC {
         addUserReg=userRegistration(_addUserReg); //convert the address and set the address for userRegistration
     }
 
-    function submitKYCRequest(string memory _userName, string memory _identificationDocument) external onlyRegisteredUser{
+    function submitKYCRequest(string memory _userName, string memory _id, string memory _phoneNum, string memory _identificationDocument) external onlyRegisteredUser{
         require(kycRequests[msg.sender].userAddress == address(0), "KYC request already submitted");
         
         kycRequests[msg.sender] = KYCRequest({
             userAddress: msg.sender,
             userName: _userName,
+            id:_id,
+            phoneNum:_phoneNum,
             identificationDocument: _identificationDocument,
             status: KYCStatus.Pending
         });
