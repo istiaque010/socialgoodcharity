@@ -517,7 +517,7 @@ contract serviceCharity {
         address[] trustees;
         address[] volunteers;
         address[] beneficiaries;
-        address[] implementAreas;
+        string[] implementAreas;
         uint256[] amount;
         bool[] refundClaimed;
         bool claimedAmount;
@@ -621,7 +621,7 @@ contract serviceCharity {
         RefundPolicy _refundPolicy,
         address[] memory _trustees,
         address[] memory _volunteers,
-        address[] memory _implementAreas,
+        string[] memory _implementAreas,
         uint256 _trusteeThreshold, // Minimum trustee approvals required
 
           //from here I added extra variables for service charity
@@ -998,7 +998,7 @@ contract createCharityPro {
         address[] trustees;
         address[] volunteers;
         address[] beneficiaries;
-        address[] implementAreas;
+        string[] implementAreas;
         uint256[] amount;
         bool[] refundClaimed;
         bool claimedAmount;
