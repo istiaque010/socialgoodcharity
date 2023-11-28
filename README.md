@@ -277,7 +277,7 @@ contract KYC {
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/9fc1ab76-3f4d-4869-bcf5-2ed465de2364)
 
 
-# Institution Registration smart Contrac
+# Institution Registration smart Contract
 
 ```solidity
 // SPDX-License-Identifier: MIT
