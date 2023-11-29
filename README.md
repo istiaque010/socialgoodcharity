@@ -1497,7 +1497,8 @@ function randomDelay(callback) {
 ```
 ### Output:
 
-![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/ee18b7ab-16fd-417b-8de7-90f0186c5796)
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/5ccbe8ef-ec9f-4db8-beaf-458290d743d1)
+
 
 
 # Proposed UI/UX Figma Design
