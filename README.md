@@ -1443,13 +1443,14 @@ getName((name) => {
     // Use the result (0 or 1) in a conditional statement
     if (coinTossOut === 0) {
         console.log("Hashed value:", hashedValue);
+        name_data = name;
+        nationalId_data = nationalId;
       // Call randomDelay before performing action A
       randomDelay((actualDelay) => {
         console.log("Coin toss result is 0. Performing action A with random delay: Passing: name, NationalId.");
         console.log("Actual Delay (milliseconds):", actualDelay);
         // Perform action A
-        name_data = name;
-        nationalId_data = nationalId;
+
         hashedValue_data = hashedValue;
     
         // Pass variables to checkHashValues
@@ -1457,6 +1458,7 @@ getName((name) => {
       });
     } else {
         console.log("Hashed value:", hashedValue);
+        nationalId_data = nationalId;
       // Call randomDelay before performing action B
       randomDelay((actualDelay) => {
         console.log("Coin toss result is 1. Performing action B with random delay: Passing HASH.");
@@ -1464,8 +1466,6 @@ getName((name) => {
         // Perform action B
         hashedValue_data = hashedValue;
         name_data = name;
-        nationalId_data = nationalId;
-
         // Pass variables to checkHashValues
         checkHashValues(name_data, nationalId_data, hashedValue_data);
       });
@@ -1492,6 +1492,7 @@ function randomDelay(callback) {
     callback(actualDelay); // Execute the callback function with the actual delay
   }, delayMilliseconds);
 }
+
 
 
 ```
