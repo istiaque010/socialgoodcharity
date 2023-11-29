@@ -1366,10 +1366,16 @@ contract createCharityPro {
 # JavaScript for HASH, Random Time and Selection
 ```javascript
 const crypto = require('crypto');
+const readline = require('readline');
 
+let name_data, nationalId_data, hashedValue_data; // Declare variables at the beginning
 
-//for input value for KYC varification
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
+// Function to hash input values for KYC verification
 function hashInput(name, nationalId) {
   try {
     const textToHash = name + nationalId;
@@ -1377,62 +1383,116 @@ function hashInput(name, nationalId) {
     hash.update(textToHash);
     return hash.digest('hex');
   } catch (error) {
-    console.error("Error:", error);
-    return null; // You can choose to handle the error as needed
+    console.error("Error:", error.message);
+    throw error; // Rethrow the error for better handling
   }
 }
 
-// Example usage: check the HASH value
-const name = "Istiaque Ahmed";
-const nationalId = "1234567890";
-const hashedValue = hashInput(name, nationalId);
-
-if (hashedValue !== null) {
-  console.log("Hashed value:", hashedValue);
+// Function to get user's name
+function getName(callback) {
+  rl.question('Enter your name: ', (name) => {
+    callback(name);
+  });
 }
 
-//random function to pass the value into the KYC module
+// Function to get user's national ID
+function getNationalId(callback) {
+  rl.question('Enter your national ID: ', (nationalId) => {
+    callback(nationalId);
+  });
+}
 
-function randomDelay(callback) {
-    // Generate a random delay between 1 and 5 seconds (you can adjust this range)
-    const delayMilliseconds = Math.floor(Math.random() * 4000) + 1000;
-  
-    // Record the start time
-    const startTime = Date.now();
-  
-    // Use setTimeout to introduce the delay
-    setTimeout(() => {
-      // Calculate the end time
-      const endTime = Date.now();
-      
-      // Calculate the actual delay
-      const actualDelay = endTime - startTime;
-  
-      callback(actualDelay); // Execute the callback function with the actual delay
-    }, delayMilliseconds);
-  }
-  
+// Function to perform a coin toss (returns 0 or 1 randomly)
+function coinToss() {
+  return Math.floor(Math.random() * 2);
+}
 
-//Pass the HASH vakue and input value for KYC varification using random delay
-
-randomDelay((actualDelay) => {
-    const hashedValueOut = hashInput(name, nationalId);
-    if (hashedValueOut !== null) {
-      console.log("Actual Delay (milliseconds):", actualDelay);
-      console.log("Hashed value after delay:", hashedValueOut);
-      
-    if(hashedValue==hashedValueOut)
-    {
-        console.log("Both Hash are same no attack");
+/// Function to check hash values without random delay
+function checkHashValues(name, nationalId, hashedValue) {
+    
+    try {
+      // Calculate the hashed value without introducing a random delay
+      const hashedValueOut = hashInput(name, nationalId);
+      console.log("Hashed value at destination:", hashedValueOut);
+  
+      // Compare the original hashed value with the recalculated one
+      if (hashedValue === hashedValueOut) {
+        console.log("Both Hash values are the same; no attack detected.");
         // Pass the hashed value to your KYC module here
+      } else {
+        console.log("Hash values mismatched; discard the input.");
+      }
+    } catch (error) {
+      console.error("Error during hash generation:", error.message);
+      // Handle the error as needed
     }
-    else
-    {
-        console.log("Hash mitchmatched discard the input");
-    }
+  }
+  
 
+// Example usage
+getName((name) => {
+  getNationalId((nationalId) => {
+    rl.close();
+
+    // Example usage: check the HASH value
+    const hashedValue = hashInput(name, nationalId);
+
+    // Call the coinToss function
+    const coinTossOut = coinToss();
+
+    // Use the result (0 or 1) in a conditional statement
+    if (coinTossOut === 0) {
+        console.log("Hashed value:", hashedValue);
+      // Call randomDelay before performing action A
+      randomDelay((actualDelay) => {
+        console.log("Coin toss result is 0. Performing action A with random delay: Passing: name, NationalId.");
+        console.log("Actual Delay (milliseconds):", actualDelay);
+        // Perform action A
+        name_data = name;
+        nationalId_data = nationalId;
+        hashedValue_data = hashedValue;
+    
+        // Pass variables to checkHashValues
+        checkHashValues(name_data, nationalId_data, hashedValue_data);
+      });
+    } else {
+        console.log("Hashed value:", hashedValue);
+      // Call randomDelay before performing action B
+      randomDelay((actualDelay) => {
+        console.log("Coin toss result is 1. Performing action B with random delay: Passing HASH.");
+        console.log("Actual Delay (milliseconds):", actualDelay);
+        // Perform action B
+        hashedValue_data = hashedValue;
+        name_data = name;
+        nationalId_data = nationalId;
+
+        // Pass variables to checkHashValues
+        checkHashValues(name_data, nationalId_data, hashedValue_data);
+      });
     }
   });
+});
+
+// Random function to pass the value into the KYC module
+function randomDelay(callback) {
+  // Generate a random delay between 1 and 5 seconds (you can adjust this range)
+  const delayMilliseconds = Math.floor(Math.random() * 4000) + 1000;
+
+  // Record the start time
+  const startTime = Date.now();
+
+  // Use setTimeout to introduce the delay
+  setTimeout(() => {
+    // Calculate the end time
+    const endTime = Date.now();
+
+    // Calculate the actual delay
+    const actualDelay = endTime - startTime;
+
+    callback(actualDelay); // Execute the callback function with the actual delay
+  }, delayMilliseconds);
+}
+
 
 ```
 ### Output:
