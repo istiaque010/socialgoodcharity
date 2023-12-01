@@ -291,6 +291,13 @@ Deployed smart contract and transaction:
 Submit the KYC request transaction:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/c2c5d842-328e-480d-a2db-8690155f4c18)
 
+Approve KYC transactions:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/63853d34-6405-49ba-9e9a-06da12898fbb)
+
+Get KYC status: decoded output 1 indicates KYC approved successfully.
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/c769fb79-4039-4091-a62a-bdd06a7d346b)
+
+
 
 # Institution Registration smart Contract
 
