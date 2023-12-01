@@ -288,6 +288,9 @@ contract KYC {
 Deployed smart contract and transaction:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/eff24aed-cd59-4d79-b840-9ce49c90e7d6)
 
+Submit the KYC request transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/c2c5d842-328e-480d-a2db-8690155f4c18)
+
 
 # Institution Registration smart Contract
 
