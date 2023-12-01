@@ -976,6 +976,14 @@ contract serviceCharity {
 ### Simulation in Remix IDE and Remix Virtual Machine Blockchain:
 Deployed smart contract and transaction:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/8ef671b0-35af-433c-a7b3-5cc5fa310aee)
+Successful Transaction for creating a new project:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/c83ed3e9-0e0b-43bf-8cde-78486388e125)
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/c6f3f39f-fb99-4551-8f7c-6ad36798ac62)
+
+Transaction of getting project details:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/0f0d599d-66cb-419c-b7d6-52ad38f3d93e)
+Transaction of calling approveProject:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/e5a6c3ce-f648-48f2-b097-862aeb452e5f)
 
 
 # General Charity Project Registration Smart Contract
