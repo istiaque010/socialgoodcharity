@@ -194,7 +194,7 @@ contract userRegistration {
 
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/7e6f0d2c-1beb-45a1-9731-a7e419231f68)
 
-### Simulation in Remix IDE and Remic Virtual Machine Blockchain:
+### Simulation in Remix IDE and Remix Virtual Machine Blockchain:
 Deployed smart contract and transaction:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/64bc652c-54e2-4f39-b4d5-275310062f0e)
 
