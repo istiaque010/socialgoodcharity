@@ -1407,6 +1407,9 @@ contract createCharityPro {
 ### Smart Contract Deployed View:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/286be8d0-5f87-42bf-92f3-132a562251c3)
 
+### Simulation in Remix IDE and Remix Virtual Machine Blockchain:
+Deployed smart contract and transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/c74df6e2-95e7-4331-b711-c74c086ca340)
 
 
 
