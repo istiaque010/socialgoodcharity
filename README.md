@@ -982,8 +982,13 @@ Successful Transaction for creating a new project:
 
 Transaction of getting project details:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/0f0d599d-66cb-419c-b7d6-52ad38f3d93e)
+
+Trustee approval transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/d21261b1-b508-4fee-ab94-7456fb078355)
+
 Transaction of calling approveProject:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/e5a6c3ce-f648-48f2-b097-862aeb452e5f)
+
 
 
 # General Charity Project Registration Smart Contract
