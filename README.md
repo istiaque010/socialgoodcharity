@@ -493,8 +493,7 @@ Deployed smart contract and transaction:
 
 Calling the registerCharity function and successfully registering the transaction:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/92daa218-1411-4ea1-8718-a58d5343a1d5)
-Fund distribution transaction:
-![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/ea43fe00-3869-4731-a5db-93a77f2ebcec)
+
 
 
 # Service Charity Project Registration Smart Contract
@@ -991,7 +990,8 @@ Trustee approval transaction:
 Transaction of calling approveProject:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/e5a6c3ce-f648-48f2-b097-862aeb452e5f)
 
-
+Fund distribution transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/ea43fe00-3869-4731-a5db-93a77f2ebcec)
 
 # General Charity Project Registration Smart Contract
 
