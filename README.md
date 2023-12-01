@@ -284,6 +284,10 @@ contract KYC {
 ### Smart Contract Deployed View:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/9fc1ab76-3f4d-4869-bcf5-2ed465de2364)
 
+### Simulation in Remix IDE and Remix Virtual Machine Blockchain:
+Deployed smart contract and transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/eff24aed-cd59-4d79-b840-9ce49c90e7d6)
+
 
 # Institution Registration smart Contract
 
