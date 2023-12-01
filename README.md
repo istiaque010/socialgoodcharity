@@ -549,7 +549,7 @@ contract serviceCharity {
         address[] trustees;
         address[] volunteers;
         address[] beneficiaries;
-        string[] implementAreas;
+        address[] implementAreas;
         uint256[] amount;
         bool[] refundClaimed;
         bool claimedAmount;
@@ -653,7 +653,7 @@ contract serviceCharity {
         RefundPolicy _refundPolicy,
         address[] memory _trustees,
         address[] memory _volunteers,
-        string[] memory _implementAreas,
+        address[] memory _implementAreas,
         uint256 _trusteeThreshold, // Minimum trustee approvals required
 
           //from here I added extra variables for service charity
@@ -907,7 +907,7 @@ contract serviceCharity {
         projects[_index].amountRaised += msg.value;
         socialEvaluation[msg.sender] += 1;
         }
-    }
+    
 
     // Helps project creator to transfer the raised funds to his address
     function claimFund(uint256 _index) validIndex(_index) external {
@@ -967,7 +967,6 @@ contract serviceCharity {
     function getSocialEvaluationForAddress(address _userAddress) external view returns (uint256) {
     return socialEvaluation[_userAddress];
     }
-
 
 }
 ```
