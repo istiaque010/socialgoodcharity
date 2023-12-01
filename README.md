@@ -487,6 +487,10 @@ contract institutionReg {
 ### Smart Contract Deployed View:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/332aa325-1107-4bac-976b-3b93a781e3b1)
 
+### Simulation in Remix IDE and Remix Virtual Machine Blockchain:
+Deployed smart contract and transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/73f3bdd2-eeaa-48cd-a155-c5edb4cca067)
+
 
 # Service Charity Project Registration Smart Contract
 
