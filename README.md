@@ -198,6 +198,10 @@ contract userRegistration {
 Deployed smart contract and transaction:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/64bc652c-54e2-4f39-b4d5-275310062f0e)
 
+Successfully calling the userRegister function and transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/1105ba66-7a48-4092-8dff-49f8ef97aa6a)
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/806cd27d-12e6-48af-8fc5-b60fc2cfef52)
+
 
 # KYC Verification Smart Contract
 
