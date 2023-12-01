@@ -491,6 +491,9 @@ contract institutionReg {
 Deployed smart contract and transaction:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/73f3bdd2-eeaa-48cd-a155-c5edb4cca067)
 
+Calling the registerCharity function and successfully registering the transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/92daa218-1411-4ea1-8718-a58d5343a1d5)
+
 
 # Service Charity Project Registration Smart Contract
 
