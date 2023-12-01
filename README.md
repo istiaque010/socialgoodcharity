@@ -973,6 +973,10 @@ contract serviceCharity {
 ### Smart Contract Deployed View:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/f9212b6e-c5f2-4022-95d7-4c757bba6be6)
 
+### Simulation in Remix IDE and Remix Virtual Machine Blockchain:
+Deployed smart contract and transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/8ef671b0-35af-433c-a7b3-5cc5fa310aee)
+
 
 # General Charity Project Registration Smart Contract
 
