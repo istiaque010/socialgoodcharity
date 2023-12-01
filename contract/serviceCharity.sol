@@ -407,7 +407,7 @@ contract serviceCharity {
         projects[_index].amountRaised += msg.value;
         socialEvaluation[msg.sender] += 1;
         }
-    }
+    
 
     // Helps project creator to transfer the raised funds to his address
     function claimFund(uint256 _index) validIndex(_index) external {
@@ -467,6 +467,5 @@ contract serviceCharity {
     function getSocialEvaluationForAddress(address _userAddress) external view returns (uint256) {
     return socialEvaluation[_userAddress];
     }
-
 
 }
