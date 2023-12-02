@@ -1410,6 +1410,25 @@ contract createCharityPro {
 ### Simulation in Remix IDE and Remix Virtual Machine Blockchain:
 Deployed smart contract and transaction:
 ![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/c74df6e2-95e7-4331-b711-c74c086ca340)
+Trying to create a project from a non-verified KYC, the algorithm responds as desired:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/4e4862c7-9635-4013-aace-d740bb7e699e)
+The project was successfully created from verified KYC address:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/c7dcc7c7-202b-4aa0-8b71-8acc95c8fee8)
+Approve a created project transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/cd0af72d-68fe-4584-8174-33c608fdcbba)
+
+Successfully calling function of fundingh project:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/e36e9585-75b3-4412-a5a2-82ee5a2604f0)
+Calling function for benefeciery of a project:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/657d8e51-e472-4021-8ffa-d80f6d7c7228)
+Transaction of getting all created function:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/d25286ec-d7df-470a-8dff-77930c0a21a9)
+
+Transaction for getting project owner:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/ed63fd8c-33b6-401b-b60f-a3d5ff358cde)
+
+Get social evaluation transaction:
+![image](https://github.com/istiaque010/socialgoodcharity/assets/7622349/1d307258-98d2-4eef-800b-97263fcf9b2e)
 
 
 
